@@ -1,0 +1,24 @@
+﻿<Window x:Class="HattrickAnalyzer.Wpf.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition Width="437*"/>
+            <ColumnDefinition Width="200*"/>
+            <ColumnDefinition Width="163*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Make the DataGrid visible by placing it in column 1 (the large column) -->
+        <DataGrid x:Name="PlayersGrid" AutoGenerateColumns="True" Grid.Column="1" Margin="10,90,10,10"/>
+        <Button Grid.Column="2" Content="Analyze" HorizontalAlignment="Left" Margin="64,106,0,0" Click="Analyze_Click" VerticalAlignment="Top" Width="94" Height="20"/>
+        <Button Grid.Column="2" Content="Import Player" HorizontalAlignment="Left" Margin="64,141,0,0" Click="ImportCsv_Click" VerticalAlignment="Top" Width="94" Height="20"/>
+        <Button Grid.Column="2" Content="Export Player" HorizontalAlignment="Left" Margin="64,178,0,0" Click="ExportExcel_Click" VerticalAlignment="Top" Width="94" Height="20"/>
+        <Button Grid.Column="2" Content="Add Player" HorizontalAlignment="Left" Margin="64,217,0,0" Click="AddPlayer_Click" VerticalAlignment="Top" Width="94" RenderTransformOrigin="0.543,3.607" Height="20"/>
+    </Grid>
+</Window>
