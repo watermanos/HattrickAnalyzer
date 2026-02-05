@@ -93,20 +93,40 @@ public partial class MainWindow : Window
         var ws = wb.Worksheets.Add("Results");
 
         ws.Cell(1, 1).Value = "Name";
-        ws.Cell(1, 2).Value = "TSI Now";
-        ws.Cell(1, 3).Value = "TSI Projected";
-        ws.Cell(1, 4).Value = "Value";
-        ws.Cell(1, 5).Value = "Training";
+        ws.Cell(1, 2).Value = "ageYears";
+        ws.Cell(1, 3).Value = "ageDays";
+        ws.Cell(1, 4).Value = "playmaking"; 
+        ws.Cell(1, 5).Value = "scoring";
+        ws.Cell(1, 6).Value = "passing";
+        ws.Cell(1, 7).Value = "defending";
+        ws.Cell(1, 8).Value = "winger";
+        ws.Cell(1, 9).Value = "TSI Now";
+        ws.Cell(1, 10).Value = "TSI Projected";
+        ws.Cell(1, 11).Value = "Value";
+        ws.Cell(1, 12).Value = "Training";
 
         for (int i = 0; i < _players.Count; i++)
         {
             var r = _players[i];
             ws.Cell(i + 2, 1).Value = r.Name;
-            ws.Cell(i + 2, 2).Value = r.TsiNow;
-            ws.Cell(i + 2, 3).Value = r.TsiProjected;
-            ws.Cell(i + 2, 4).Value = r.Value;
-            ws.Cell(i + 2, 5).Value = r.Training;
+            ws.Cell(i + 2, 2).Value = r.AgeYears;
+            ws.Cell(i + 2, 3).Value = r.AgeDays;
+            ws.Cell(i + 2, 4).Value = r.Playmaking;
+            ws.Cell(i + 2, 5).Value = r.Scoring;
+            ws.Cell(i + 2, 6).Value = r.Passing;
+            ws.Cell(i + 2, 7).Value = r.Defending;
+            ws.Cell(i + 2, 8).Value = r.Winger;
+            ws.Cell(i + 2, 9).Value = r.TsiNow;
+            ws.Cell(i + 2, 10).Value = r.TsiProjected;
+            ws.Cell(i + 2, 11).Value = r.Value;
+            ws.Cell(i + 2, 12).Value = r.Training;
         }
+
+        var range = ws.Range(1, 1, _players.Count + 1, 12);
+        var table = range.CreateTable("PlayersTable");
+        table.Theme = XLTableTheme.TableStyleMedium9;
+
+        ws.Columns().AdjustToContents();
 
         wb.SaveAs(dialog.FileName);
         MessageBox.Show("Excel export completed ✔");
