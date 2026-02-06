@@ -6,7 +6,10 @@
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
+    <Window.Resources>
+        <Color x:Key="SolidColorBrushColor1">#FF277F31</Color>
+    </Window.Resources>
+    <Grid Cursor="" Background="#FF277F31">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0*"/>
             <ColumnDefinition Width="437*"/>
@@ -15,10 +18,11 @@
         </Grid.ColumnDefinitions>
 
         <!-- Make the DataGrid visible by placing it in column 1 (the large column) -->
-        <DataGrid x:Name="PlayersGrid" AutoGenerateColumns="True" Grid.Column="1" Margin="10,90,10,10"/>
+        <DataGrid x:Name="PlayersGrid" AutoGenerateColumns="True" Grid.Column="1" Margin="10,90,10,10" Background="#FFFECB00"/>
         <Button Grid.Column="2" Content="Analyze" HorizontalAlignment="Left" Margin="64,106,0,0" Click="Analyze_Click" VerticalAlignment="Top" Width="94" Height="20"/>
         <Button Grid.Column="2" Content="Import Player" HorizontalAlignment="Left" Margin="64,141,0,0" Click="ImportCsv_Click" VerticalAlignment="Top" Width="94" Height="20"/>
         <Button Grid.Column="2" Content="Export Player" HorizontalAlignment="Left" Margin="64,178,0,0" Click="ExportExcel_Click" VerticalAlignment="Top" Width="94" Height="20"/>
         <Button Grid.Column="2" Content="Add Player" HorizontalAlignment="Left" Margin="64,217,0,0" Click="AddPlayer_Click" VerticalAlignment="Top" Width="94" RenderTransformOrigin="0.543,3.607" Height="20"/>
+        <TextBlock x:Name="title" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="44,10,0,0" TextWrapping="Wrap" Text="Hattrick Analyzer" Foreground="WhiteSmoke"  FontStyle="Italic" FontSize="22" FontWeight="Bold" VerticalAlignment="Top"/>
     </Grid>
 </Window>
