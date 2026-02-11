@@ -29,6 +29,8 @@ public class PlayerAnalysis : INotifyPropertyChanged
 
     private int _winger;
     public int Winger { get => _winger; set => Set(ref _winger, value); }
+    public int Stamina { get; set; }
+    public int Experience { get; set; }
 
     /* private int _tsi;
      public int TSI { get => _tsi; set => Set(ref _tsi, value); }
