@@ -17,9 +17,9 @@ public sealed class PlayerAnalysisMap : ClassMap<PlayerAnalysis>
         Map(m => m.Defending).Name("Defending", "Άμυνα").TypeConverter<IntZeroOnInvalidConverter>().Default(0);
         Map(m => m.Winger).Name("Winger", "Πλάγια").TypeConverter<IntZeroOnInvalidConverter>().Default(0);
 
-        Map(m => m.TSI).Name("TSI", "ΤSI").TypeConverter<IntZeroOnInvalidConverter>().Default(0);
-        Map(m => m.TsiNow).Name("TsiNow", "ΤSI τώρα").TypeConverter<IntZeroOnInvalidConverter>().Default(0);
-        Map(m => m.TsiProjected).Name("TsiProjected", "Προβολή ΤSI").TypeConverter<IntZeroOnInvalidConverter>().Default(0);
+        Map(m => m.CurrentTSI).Name("TSI", "ΤSI").TypeConverter<IntZeroOnInvalidConverter>().Default(0);
+       // Map(m => m.CurrentTSI).Name("TsiNow", "ΤSI τώρα").TypeConverter<IntZeroOnInvalidConverter>().Default(0);
+        Map(m => m.ProjectedTSI).Name("TsiProjected", "Προβολή ΤSI").TypeConverter<IntZeroOnInvalidConverter>().Default(0);
 
         Map(m => m.Value).Name("Value", "TSI value", "Αξία").TypeConverter<DoubleZeroOnInvalidConverter>().Default(0.0);
 

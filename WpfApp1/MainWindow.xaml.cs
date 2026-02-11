@@ -74,8 +74,14 @@ public partial class MainWindow : Window
         var players = csv.GetRecords<PlayerAnalysis>().ToList();
 
         foreach (var p in players)
+        {
+            p.EstimatedTSI = TsiCalculator.GetCurrentOrEstimated(p);
+            p.ProjectedTSI = TsiCalculator.CalculateProjected(p);
+
             _players.Add(p);
+        }
     }
+
 
     // 📤 EXPORT EXCEL
     private void ExportExcel_Click(object sender, RoutedEventArgs e)
@@ -116,8 +122,8 @@ public partial class MainWindow : Window
             ws.Cell(i + 2, 6).Value = r.Passing;
             ws.Cell(i + 2, 7).Value = r.Defending;
             ws.Cell(i + 2, 8).Value = r.Winger;
-            ws.Cell(i + 2, 9).Value = r.TsiNow;
-            ws.Cell(i + 2, 10).Value = r.TsiProjected;
+            ws.Cell(i + 2, 9).Value = r.CurrentTSI;
+            ws.Cell(i + 2, 10).Value = r.ProjectedTSI;
             ws.Cell(i + 2, 11).Value = r.Value;
             ws.Cell(i + 2, 12).Value = r.Training;
         }
@@ -135,19 +141,30 @@ public partial class MainWindow : Window
     // Analyze a single player and write results into the same object (so the grid updates)
     private void AnalyzePlayerInPlace(PlayerAnalysis p)
     {
-        p.TSI = TsiCalculator.Calculate(p);
+        bool isYouth = p.AgeYears < 18 || p.CurrentTSI <= 0;
+
+        if (isYouth)
+        {
+            // Μόνο για νέους χωρίς πραγματικό TSI
+            p.CurrentTSI = TsiCalculator.CalculateProjected(p);
+            p.CurrentTSI = p.CurrentTSI;
+        }
 
         var projected = TrainingCalculator.ProjectTSI(p, 10);
         var training = TrainingCalculator.RecommendTraining(p);
         var value = ValueCalculator.Estimate(projected, p.AgeYears);
 
-        p.TsiNow = p.TSI;
-        p.TsiProjected = projected;
+        p.ProjectedTSI = projected;
         p.Value = value;
         p.Training = training;
     }
 
     private void PlayersGrid_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
     {
+    }
+
+    private void PlayersGrid_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
+    {
+
     }
 }

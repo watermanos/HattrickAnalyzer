@@ -30,14 +30,20 @@ public class PlayerAnalysis : INotifyPropertyChanged
     private int _winger;
     public int Winger { get => _winger; set => Set(ref _winger, value); }
 
-    private int _tsi;
-    public int TSI { get => _tsi; set => Set(ref _tsi, value); }
+    /* private int _tsi;
+     public int TSI { get => _tsi; set => Set(ref _tsi, value); }
 
-    private int _tsiNow;
-    public int TsiNow { get => _tsiNow; set => Set(ref _tsiNow, value); }
 
-    private int _tsiProjected;
-    public int TsiProjected { get => _tsiProjected; set => Set(ref _tsiProjected, value); }
+      private int _tsiNow;
+      public int TsiNow { get => _tsiNow; set => Set(ref _tsiNow, value); }
+
+      public int EstimatedTSI { get; set; }
+
+      private int _tsiProjected;
+      public int TsiProjected { get => _tsiProjected; set => Set(ref _tsiProjected, value); }*/
+    public int CurrentTSI { get; set; }      // το πραγματικό (από CSV)
+    public int EstimatedTSI { get; set; }    // μόνο για youth
+    public int ProjectedTSI { get; set; }    // future
 
     private double _value;
     public double Value { get => _value; set => Set(ref _value, value); }

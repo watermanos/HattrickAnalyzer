@@ -12,7 +12,7 @@ public static class TrainingCalculator
             p.AgeYears < 25 ? 0.9 : 0.6;
 
         int weeklyGain = (int)(200 * ageFactor);
-        return p.TSI + weeklyGain * weeks;
+        return p.CurrentTSI + weeklyGain * weeks;
     }
 
     public static string RecommendTraining(PlayerAnalysis p)
