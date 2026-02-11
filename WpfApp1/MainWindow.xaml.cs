@@ -141,15 +141,15 @@ public partial class MainWindow : Window
     // Analyze a single player and write results into the same object (so the grid updates)
     private void AnalyzePlayerInPlace(PlayerAnalysis p)
     {
-        bool isYouth = p.AgeYears < 18 || p.CurrentTSI <= 0;
-
-        if (isYouth)
+        // Αν ο παίκτης έχει ήδη TSI, κράτα το όπως είναι
+        if (p.CurrentTSI <= 0 && p.CurrentTSI <= 0)
         {
-            // Μόνο για νέους χωρίς πραγματικό TSI
-            p.CurrentTSI = TsiCalculator.CalculateProjected(p);
+            // Youth player -> υπολόγισε estimate
+            p.CurrentTSI = TsiCalculator.GetCurrentOrEstimated(p);
             p.CurrentTSI = p.CurrentTSI;
         }
 
+        // Τα υπόλοιπα δεν αλλάζουν
         var projected = TrainingCalculator.ProjectTSI(p, 10);
         var training = TrainingCalculator.RecommendTraining(p);
         var value = ValueCalculator.Estimate(projected, p.AgeYears);

@@ -26,11 +26,11 @@ public static class TsiCalculator
     public static int ExpectedFromSkills(PlayerAnalysis p)
     {
         return
-            p.Playmaking * 1000 +
-            p.Scoring * 900 +
-            p.Passing * 700 +
-            p.Defending * 800 +
-            p.Winger * 700;
+            p.Playmaking * 900 +
+            p.Scoring * 810 +
+            p.Passing * 630 +
+            p.Defending * 720 +
+            p.Winger * 630;
     }
 
 
@@ -46,7 +46,7 @@ public static class TsiCalculator
 
         double factor = (double)p.CurrentTSI / expected;
 
-        return Math.Clamp(factor, 0.75, 1.40);
+        return Math.Clamp(factor, 0.80, 1.20);
     }
 
     // ================= FINAL PROJECTED TSI =================
@@ -54,13 +54,22 @@ public static class TsiCalculator
     {
         double factor = HiddenSkillFactor(p);
 
-        double projected =
+        double rawProjected =
             (p.Playmaking * 1000 +
              p.Scoring * 900 +
              p.Passing * 700 +
              p.Defending * 800 +
              p.Winger * 700) * factor;
 
-        return (int)projected;
+        int result = (int)rawProjected;
+        if (p.CurrentTSI > 0)
+        {
+            int maxDelta = 10_000;
+            int delta = result - p.CurrentTSI;
+            if (delta > maxDelta) result = p.CurrentTSI + maxDelta;
+            else if (delta < -maxDelta) result = p.CurrentTSI - maxDelta;
+        }
+
+        return result;
     }
 }
