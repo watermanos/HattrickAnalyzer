@@ -1,14 +1,15 @@
-﻿using System.Formats.Asn1;
+﻿using System.Collections.ObjectModel;
+using System.Formats.Asn1;
 using System.Globalization;
 using System.IO;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
 using ClosedXML.Excel;
 using CsvHelper;
 using CsvHelper.Configuration;
 using HattrickAnalyzer.Core.Calculators;
 using HattrickAnalyzer.Core.Models;
-using System.Collections.ObjectModel;
-using System.Windows.Controls;
 
 namespace HattrickAnalyzer.Wpf;
 
@@ -158,7 +159,7 @@ public partial class MainWindow : Window
         p.Value = value;
         p.Training = training;
     }
-
+   
     private void PlayersGrid_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
     {
     }
@@ -167,4 +168,6 @@ public partial class MainWindow : Window
     {
 
     }
+
+
 }
