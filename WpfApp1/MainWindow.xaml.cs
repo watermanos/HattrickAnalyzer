@@ -109,8 +109,8 @@ public partial class MainWindow : Window
         ws.Cell(1, 8).Value = "winger";
         ws.Cell(1, 9).Value = "TSI Now";
         ws.Cell(1, 10).Value = "TSI Projected";
-        ws.Cell(1, 11).Value = "Value";
-        ws.Cell(1, 12).Value = "Training";
+       
+        ws.Cell(1, 11).Value = "Training";
 
         for (int i = 0; i < _players.Count; i++)
         {
@@ -125,8 +125,8 @@ public partial class MainWindow : Window
             ws.Cell(i + 2, 8).Value = r.Winger;
             ws.Cell(i + 2, 9).Value = r.CurrentTSI;
             ws.Cell(i + 2, 10).Value = r.ProjectedTSI;
-            ws.Cell(i + 2, 11).Value = r.Value;
-            ws.Cell(i + 2, 12).Value = r.Training;
+          
+            ws.Cell(i + 2, 11).Value = r.Training;
         }
 
         var range = ws.Range(1, 1, _players.Count + 1, 12);
@@ -156,7 +156,7 @@ public partial class MainWindow : Window
         var value = ValueCalculator.Estimate(projected, p.AgeYears);
 
         p.ProjectedTSI = projected;
-        p.Value = value;
+       // p.Value = (int)value;
         p.Training = training;
     }
    

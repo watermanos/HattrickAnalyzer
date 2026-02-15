@@ -47,8 +47,8 @@ public class PlayerAnalysis : INotifyPropertyChanged
     public int EstimatedTSI { get; set; }    // μόνο για youth
     public int ProjectedTSI { get; set; }    // future
 
-    private double _value;
-    public double Value { get => _value; set => Set(ref _value, value); }
+    /*private int _value;
+    public int Value { get => _value; set => Set(ref _value, value); }*/
 
     private string _training = "";
     public string Training { get => _training; set => Set(ref _training, value); }

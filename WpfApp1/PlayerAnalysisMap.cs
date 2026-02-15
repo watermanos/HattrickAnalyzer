@@ -22,7 +22,7 @@ public sealed class PlayerAnalysisMap : ClassMap<PlayerAnalysis>
         Map(m => m.ProjectedTSI).Name("TsiProjected", "Προβολή ΤSI").TypeConverter<IntZeroOnInvalidConverter>().Default(0);
         Map(m => m.Stamina).Name("Stamina", "Αντοχή").TypeConverter<IntZeroOnInvalidConverter>().Default(0);
         Map(m => m.Experience).Name("Experience", "Εμπειρία").TypeConverter<IntZeroOnInvalidConverter>().Default(0);
-        Map(m => m.Value).Name("Value", "TSI value", "Αξία").TypeConverter<DoubleZeroOnInvalidConverter>().Default(0.0);
+        //Map(m => m.Value).Name("TSI value", "Αξία").TypeConverter<IntZeroOnInvalidConverter>().Default(0.0);
 
         // Add other mappings as needed
     }
