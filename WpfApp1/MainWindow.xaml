@@ -72,7 +72,7 @@
         <StackPanel Grid.Column="1"
                     Margin="0,60,0,0"
                     VerticalAlignment="Top">
-            <Button Content="Analyze" Click="Analyze_Click" Margin="0,0,0,10"/>
+            
             <Button Content="Import Player" Click="ImportCsv_Click" Margin="0,0,0,10"/>
             <Button Content="Export Player" Click="ExportExcel_Click" Margin="0,0,0,10"/>
             <Button Content="Add Player" Click="AddPlayer_Click"/>

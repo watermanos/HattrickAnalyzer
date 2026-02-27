@@ -23,7 +23,7 @@ public partial class MainWindow : Window
         PlayersGrid.ItemsSource = _players;
     }
 
-    private void Analyze_Click(object sender, RoutedEventArgs e)
+    /*private void Analyze_Click(object sender, RoutedEventArgs e)
     {
         // Commit any pending edits in the DataGrid so values entered by user are applied to the bound object
         PlayersGrid.CommitEdit();
@@ -37,7 +37,7 @@ public partial class MainWindow : Window
             foreach (var p in _players)
                 AnalyzePlayerInPlace(p);
         }
-    }
+    }*/
 
     // ➕ ADD PLAYER (adds an empty row for the user to fill)
     private void AddPlayer_Click(object sender, RoutedEventArgs e)
@@ -110,7 +110,6 @@ public partial class MainWindow : Window
         ws.Cell(1, 9).Value = "TSI Now";
         ws.Cell(1, 10).Value = "TSI Projected";
        
-        ws.Cell(1, 11).Value = "Training";
 
         for (int i = 0; i < _players.Count; i++)
         {
@@ -126,7 +125,7 @@ public partial class MainWindow : Window
             ws.Cell(i + 2, 9).Value = r.CurrentTSI;
             ws.Cell(i + 2, 10).Value = r.ProjectedTSI;
           
-            ws.Cell(i + 2, 11).Value = r.Training;
+         
         }
 
         var range = ws.Range(1, 1, _players.Count + 1, 12);
@@ -152,12 +151,12 @@ public partial class MainWindow : Window
 
         // Τα υπόλοιπα δεν αλλάζουν
         var projected = TrainingCalculator.ProjectTSI(p, 10);
-        var training = TrainingCalculator.RecommendTraining(p);
+        //var training = TrainingCalculator.RecommendTraining(p);
         var value = ValueCalculator.Estimate(projected, p.AgeYears);
 
         p.ProjectedTSI = projected;
        // p.Value = (int)value;
-        p.Training = training;
+       // p.Training = training;
     }
    
     private void PlayersGrid_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)

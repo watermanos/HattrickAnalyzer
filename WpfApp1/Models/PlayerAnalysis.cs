@@ -32,26 +32,12 @@ public class PlayerAnalysis : INotifyPropertyChanged
     public int Stamina { get; set; }
     public int Experience { get; set; }
 
-    /* private int _tsi;
-     public int TSI { get => _tsi; set => Set(ref _tsi, value); }
-
-
-      private int _tsiNow;
-      public int TsiNow { get => _tsiNow; set => Set(ref _tsiNow, value); }
-
-      public int EstimatedTSI { get; set; }
-
-      private int _tsiProjected;
-      public int TsiProjected { get => _tsiProjected; set => Set(ref _tsiProjected, value); }*/
+  
     public int CurrentTSI { get; set; }      // το πραγματικό (από CSV)
     public int EstimatedTSI { get; set; }    // μόνο για youth
     public int ProjectedTSI { get; set; }    // future
 
-    /*private int _value;
-    public int Value { get => _value; set => Set(ref _value, value); }*/
-
-    private string _training = "";
-    public string Training { get => _training; set => Set(ref _training, value); }
+ 
 
     public event PropertyChangedEventHandler? PropertyChanged;
     private void Set<T>(ref T field, T value, [CallerMemberName] string? name = null)
