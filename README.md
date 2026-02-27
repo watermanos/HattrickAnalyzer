@@ -7,7 +7,7 @@ A simple desktop tool to import Hattrick player data from CSV, analyze and compa
 - Load player data from a CSV file  
 - Analyze and compare new or young players  
 - Estimate **current and projected TSI values** (approximation based on skills and age)  
-- Recommend optimal training categories  
+##- Recommend optimal training categories  
 - Add player rows manually in the UI  
 - Export analyzed results into an Excel spreadsheet  
 
@@ -35,10 +35,9 @@ Make sure you have:
 2. The app reads each player and calculates:
    - Current or estimated TSI  
    - Projected TSI after training (approximation)  
-   - Training recommendations  
+   ##- Training recommendations  
 3. You can manually add players with the **Add Player** button  
-4. Select one or more players and click **Analyze** to run calculations  
-5. Click **Export Excel** to save results in a `.xlsx` file  
+4. Click **Export Excel** to save results in a `.xlsx` file  
 
 ## CSV Format Example
 
